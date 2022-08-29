@@ -3,8 +3,8 @@ module "cloudbuild" {
   project_id = "travisgkepequickstart"
   gkeregionprimary = "us-east1"
   gkeregionsecondary = "us-central1"
-  gkecluster = "generalCluster"
-  fqdn = "privateedition.genesyssc13.com.	"
+  gkecluster = "general-cluster"
+  fqdn = "privateedition.genesyssc13.com"
   emailaddress = "travis.coleman@genesys.com"
   storageBucketName = "private-edition-bucket"
   githubURL = "https://github.com/TravisC1720/multicloud-gke-quickstart"
@@ -29,7 +29,7 @@ terraform {
     }
   }
 
-  required_version = "= 1.2.8"
+  required_version = "= 1.2.6"
 }
 
 terraform {
