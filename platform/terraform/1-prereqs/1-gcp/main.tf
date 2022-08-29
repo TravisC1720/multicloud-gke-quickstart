@@ -1,13 +1,13 @@
 module "gcp" {
   source = "../../../tfm/1-prereqs/1-gcp/"
-  storageBucketName = "INSERT_STORAGEBUCKETNAME"
-  location = "INSERT_LOCATION"
-  project_id = "INSERT_PROJECTNAME"
-  user = "serviceAccount:INSERT_SERVICEACCOUNT@cloudbuild.gserviceaccount.com"
+  storageBucketName = "private-edition-bucket"
+  location = "us-east1"
+  project_id = "travisgkepequickstart"
+  user = "serviceAccount:484389204278@cloudbuild.gserviceaccount.com"
 }
 
 provider "google" {
-  project = "INSERT_PROJECTNAME"
+  project = "travisgkepequickstart"
 }
 
 terraform {

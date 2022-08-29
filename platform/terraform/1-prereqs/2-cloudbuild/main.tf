@@ -1,24 +1,24 @@
 module "cloudbuild" {
   source = "../../../tfm/1-prereqs/2-cloudbuild/"
-  project_id = "INSERT_PROJECTNAME"
-  gkeregionprimary = "INSERT_PRIMARYREGION"
-  gkeregionsecondary = "INSERT_SECONDARYREGION"
-  gkecluster = "INSERT_GKECLUSTERNAME"
-  fqdn = "INSERT_FQDN"
+  project_id = "travisgkepequickstart"
+  gkeregionprimary = "us-east1"
+  gkeregionsecondary = "us-central1"
+  gkecluster = "generalCluster"
+  fqdn = "privateedition.genesyssc13.com.	"
   emailaddress = "INSERT_EMAILADDRESS"
-  storageBucketName = "INSERT_STORAGEBUCKETNAME"
-  githubURL = "INSERT_GITHUBURL"
-  helmRepoURL = "oci://INSERT_PRIMARYREGION-docker.pkg.dev/INSERT_PROJECTNAME/genesys-multicloud-pe-charts"
-  containerRegistryURL = "INSERT_PRIMARYREGION-docker.pkg.dev/INSERT_PROJECTNAME/genesys-multicloud-pe-images"
-  repoid = "INSERT_HELMREPOID"
-  remotehelm = "INSERT_ARTIFCTORYURL" 
-  remoterepo = "INSERT_ARTIFCTORYHELMPATH"
-  remoteuser = "INSERT_ARTIFACTORYUSER"
-  remotepass = "INSERT_ARTIFACTORYPASSWORD"
+  storageBucketName = "private-edition-bucket"
+  githubURL = "https://github.com/TravisC1720/multicloud-gke-quickstart"
+  helmRepoURL = "oci://us-east1-docker.pkg.dev/travisgkepequickstart/genesys-multicloud-pe-charts"
+  containerRegistryURL = "us-east1-docker.pkg.dev/travisgkepequickstart/genesys-multicloud-pe-images"
+  repoid = "genesys-multicloud-pe"
+  remotehelm = "https://pureengageuse1.jfrog.io/artifactory/api/helm/helm-multicloud" 
+  remoterepo = "pureengageuse1-docker-multicloud.jfrog.io"
+  remoteuser = "demo-user"
+  remotepass = "Genesys1"
 }
 
 provider "google" {
-  project = "INSERT_PROJECTNAME"
+  project = "travisgkepequickstart"
 }
 
 terraform {
@@ -34,7 +34,7 @@ terraform {
 
 terraform {
   backend "gcs" {
-    bucket = "INSERT_STORAGEBUCKETNAME"
+    bucket = "private-edition-bucket"
     prefix = "base-state"
   }
 }
