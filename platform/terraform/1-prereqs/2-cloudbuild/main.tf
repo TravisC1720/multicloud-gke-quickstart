@@ -5,7 +5,7 @@ module "cloudbuild" {
   gkeregionsecondary = "us-central1"
   gkecluster = "generalCluster"
   fqdn = "privateedition.genesyssc13.com.	"
-  emailaddress = "INSERT_EMAILADDRESS"
+  emailaddress = "travis.coleman@genesys.com"
   storageBucketName = "private-edition-bucket"
   githubURL = "https://github.com/TravisC1720/multicloud-gke-quickstart"
   helmRepoURL = "oci://us-east1-docker.pkg.dev/travisgkepequickstart/genesys-multicloud-pe-charts"
@@ -29,7 +29,7 @@ terraform {
     }
   }
 
-  required_version = "= 1.2.6"
+  required_version = "= 1.2.8"
 }
 
 terraform {
