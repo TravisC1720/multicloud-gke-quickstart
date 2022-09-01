@@ -50,7 +50,7 @@ function IWD_PROVISION_PARAMS {
     "id": "$tenant_sid",
     "name": "t${tenant_sid}",
     "ccid": "$tenant_id",
-    "apiKey": "${iwd_tenant_api_key}"
+    "apiKey": "${iwd_nexus_api_key}"
   },
   "iwd": {
     "url": "http://iwd.${NS}:4024",
@@ -63,7 +63,7 @@ function IWD_PROVISION_PARAMS {
       "ssl": false
     },
     "apiKeys": {
-      "IWD_APIKEY_TENANT": "${iwd_nexus_api_key}",
+      "IWD_APIKEY_TENANT": "${iwd_tenant_api_key_tenant}",
       "IWD_APIKEY_IWDDM": "${iwd_tenant_api_key_iwddm}"
     }
   },
@@ -88,7 +88,8 @@ kubectl run curlbox --image=alpine/curl --restart=Never -- \
   curl "http://iwd.${NS}:4024/iwd/v3/provisioning" \
   -H "Content-Type: application/json; charset=utf-8" \
   -H "x-api-key: ${iwd_tenant_api_key}" \
-  -d "$(IWD_PROVISION_PARAMS)"
+  -d "$(IWD_PROVISION_PARAMS)" \
+  -X "POST"
 sleep 30
 kubectl logs curlbox
 kubectl delete pods curlbox
